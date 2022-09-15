@@ -44,6 +44,7 @@ Script @php artisan package:discover --ansi handling the post-autoload-dump even
 
 Solusinya :
 Cari file
+
 vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php
 temukan line 116 dan beri comment pada code:
 
@@ -53,6 +54,7 @@ Lalu tambahkan script 2 baris dibawah script yang dikomen tadi
 scriptnya sebagai berikut:
 
 $installed = json_decode($this->files->get($path), true);
+
 $packages = $installed['packages'] ?? $installed;
 
 - - - - -

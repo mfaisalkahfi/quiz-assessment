@@ -33,7 +33,8 @@ For a standard installation please follow the Setup instructions
 - - - - -
 
 ## ERORR
-- Jika menemukan error ketika menjalankan __composer install__ dengan pesan:
+Jika menemukan error ketika menjalankan __composer install__ dengan pesan:
+
 In PackageManifest.php line 122:
 
   Undefined index: name
@@ -41,9 +42,8 @@ In PackageManifest.php line 122:
 
 Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
 
-- Solusinya :
-Cari file:
-
+Solusinya :
+Cari file
 vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php
 temukan line 116 dan beri comment pada code:
 

@@ -32,6 +32,31 @@ For a standard installation please follow the Setup instructions
 
 - - - - -
 
+## ERORR
+- Jika menemukan error ketika menjalankan __composer install__ dengan pesan:
+In PackageManifest.php line 122:
+
+  Undefined index: name
+
+
+Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
+
+- Solusinya :
+Cari file:
+
+vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php
+temukan line 116 dan beri comment pada code:
+
+$packages = json_decode($this->files->get($path), true);
+
+Lalu tambahkan script 2 baris dibawah script yang dikomen tadi
+scriptnya sebagai berikut:
+
+$installed = json_decode($this->files->get($path), true);
+$packages = $installed['packages'] ?? $installed;
+
+- - - - -
+
 ## License
 
 Silahkan gunakan dan kembangkan dengan inovasi apapun yang kalian miliki.
